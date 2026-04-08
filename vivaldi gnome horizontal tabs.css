@@ -1,0 +1,387 @@
+/* =========================================================================
+   VIVALDI GNOME / LIBADWAITA THEME (Horizontal Tabs - Classic Stable)
+   ========================================================================= */
+
+/* Arredondamento geral da janela no Linux */
+#browser.linux {
+    border-radius: 12px;
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ocultar botões de minimizar e maximizar (Padrão GNOME) */
+.window-buttongroup button.window-minimize,
+.window-buttongroup button.window-maximize {
+    display: none !important;
+}
+
+/* =========================================================================
+   CABEÇALHO E BOTÕES DE JANELA (FORÇA BRUTA PARA O CANTO)
+   ========================================================================= */
+
+/* O Header principal */
+#header {
+    background-color: #1D1D20 !important;
+}
+
+/* O contêiner que organiza a barra no topo */
+#titlebar {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    position: relative !important; /* ESSENCIAL para a posição absoluta funcionar */
+}
+
+/* Menu Hambúrguer */
+.vivaldi {
+    order: 2 !important;
+    margin-left: auto !important; 
+    margin-right: -50px !important; /* Reduzido de 42px para aproximar os botões */
+    position: static !important;
+}
+
+/* Botão de Fechar: Pregado no canto absoluto da janela */
+.window-buttongroup {
+    position: absolute !important;
+    right: 8px !important; /* DISTÂNCIA DA BORDA: mude para 4px ou 0 se quiser mais colado */
+    top: 50% !important;
+    transform: translateY(-50%) !important; /* Centraliza verticalmente perfeito */
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    z-index: 9999 !important;
+}
+
+/* Estilo base do botão de fechar: fundo circular cinza persistente */
+.window-buttongroup button {
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    background-color: rgba(150, 150, 150, 0.2) !important; 
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important; 
+}
+
+/* Efeito de hover suave */
+#browser.linux .window-buttongroup button:hover {
+    background-color: rgba(150, 150, 150, 0.35) !important;
+}
+
+/* Limpa fundos extras que o Vivaldi tenta injetar no botão */
+.window-buttongroup button svg,
+.window-buttongroup button::after,
+.window-buttongroup button::before {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 50% !important;
+}
+
+/* =========================================================================
+   ESTILO DE ABAS FLUTUANTES (GNOME / ADWAITA)
+   ========================================================================= */
+
+/* Fundo da barra de abas com a cor base */
+#tabs-tabbar-container {
+    background-color: #1D1D20 !important;
+    padding: 4px !important;
+}
+
+/* Força a barra de abas a ocupar o máximo de espaço sem ser esmagada */
+#tabs-container {
+    flex: 1 1 auto !important;
+    order: 1 !important;
+    width: 100% !important;
+    min-width: 0 !important; 
+}
+
+/* Remove as linhas divisórias feias entre as abas */
+.tab-position .tab::before,
+.tab-position .tab::after {
+    display: none !important;
+}
+
+/* Para evitar que as abas se sobreponham, estilizamos apenas o miolo delas */
+.tab-position .tab {
+    background-color: transparent !important;
+}
+
+.tab-position .tab .tab-header {
+    background-color: transparent !important;
+    border-radius: 6px !important; /* Arredondamento Adwaita */
+    margin: 2px 4px !important; /* Espaçamento entre as abas */
+    height: calc(100% - 4px) !important;
+}
+
+/* Estilo da aba ativa */
+.tab-position .tab.active .tab-header {
+    background-color: #343436 !important; 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
+}
+
+/* Hover nas abas inativas */
+.tab-position .tab:not(.active):hover .tab-header {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* =========================================================================
+   BARRA DE NAVEGAÇÃO E ENDEREÇO
+   ========================================================================= */
+
+/* Força a barra lateral (Painel Web) a usar a cor escura */
+#panels-container {
+    background-color: #2E2E32 !important;
+}
+
+/* Deixa a barra de navegação principal com a cor exata */
+.toolbar-mainbar {
+    background-color: #343436 !important;
+    border-bottom: none !important; 
+}
+
+/* --- BARRA DE ENDEREÇO (Padrão GNOME 8px - CORRIGIDO) --- */
+.UrlBar-AddressField, 
+.UrlBar-SearchField {
+    border-radius: 8px !important; /* Menos arredondado, visual nativo */
+    background-color: #1D1D20 !important; 
+    border: 1px solid rgba(255, 255, 255, 0.08) !important; 
+    box-shadow: none !important;
+    padding-left: 8px !important;
+}
+
+/* Foco na barra de endereço */
+.UrlBar-AddressField:focus-within, 
+.UrlBar-SearchField:focus-within {
+    border: 2px solid #3584E4 !important; /* Azul padrão do GNOME */
+    background-color: #2E2E32 !important;
+}
+
+/* =========================================================================
+   ESTILIZAÇÃO DOS CARTÕES DA TELA INICIAL (Speed Dial)
+   ========================================================================= */
+
+.dial {
+    border-radius: 12px !important;
+    background-color: #2E2E32 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+
+.dial:hover {
+    background-color: #343436 !important;
+    transform: translateY(-2px) !important; 
+}
+
+.dial-thumbnail {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* Arredonda a imagem/miniatura de dentro do cartão */
+.thumbnail-image, 
+.speeddial .dial .thumbnail-image,
+.speeddial .dial-content {
+    background-color: #2E2E32 !important; 
+    border-radius: 20px !important;
+    padding: 35px !important; 
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.thumbnail-image img, 
+.thumbnail-image svg,
+.speeddial .dial img,
+.speeddial .dial svg {
+    object-fit: contain !important;
+    width: 100% !important; 
+    height: 100% !important;
+    max-width: 60px !important; 
+    max-height: 60px !important;
+}
+
+.speeddial .dial {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.speeddial .dial .dial-title {
+    margin-top: 18px !important;
+    opacity: 0.9 !important; 
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    color: #eeeeec !important;
+}
+
+/* =========================================================================
+   BARRA DE NAVEGAÇÃO DA PÁGINA INICIAL E PAINEL
+   ========================================================================= */
+
+.startpage-navigation {
+    display: flex !important;
+    align-items: center !important; 
+    justify-content: center !important; 
+    height: 54px !important; 
+    border-bottom: none !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    background: transparent !important; 
+}
+
+.startpage-navigation button {
+    all: unset !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: transparent !important;
+    color: #eeeeec !important;
+    font-size: 13px !important;
+    font-family: 'Adwaita Sans', sans-serif !important;
+    height: 28px !important; 
+    padding: 0 16px !important;
+    border-radius: 99px !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.startpage-navigation button.active,
+.startpage-navigation button[data-selected="true"] {
+    background-color: #343436 !important;
+    color: #ffffff !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+}
+
+.startpage-navigation button:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.startpage-navigation button::after,
+.startpage-navigation button::before {
+    display: none !important;
+}
+
+.SpeedDialView-Settings-Button {
+    display: none !important;
+}
+
+/* Fundo da barra de ícones e espaçamento */
+#switch {
+    background-color: #1D1D20 !important; 
+    padding: 8px 4px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+}
+
+#switch hr {
+    display: none !important;
+}
+
+#switch button.webviewbtn,
+#switch button.addwebpanel-button {
+    border-radius: 8px !important; 
+    width: 38px !important;
+    height: 38px !important;
+    margin: 0 auto !important;
+    transition: background-color 0.2s ease, transform 0.1s ease !important;
+}
+
+#switch button.webviewbtn:hover,
+#switch button.addwebpanel-button:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+#switch button.webviewbtn.active {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: inset 3px 0 0 #3584E4 !important; 
+}
+
+/* =========================================================================
+   TIPOGRAFIA, MENUS E SCROLLBARS
+   ========================================================================= */
+
+#browser, 
+#browser button, 
+#browser input, 
+#browser select, 
+#browser textarea {
+    font-family: 'Adwaita Sans', system-ui, sans-serif !important;
+}
+
+.Menu,
+.menu-popup,
+#browser .Menu,
+#browser .menu-popup {
+    background-color: #2E2E32 !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    padding: 6px !important;
+    overflow: hidden !important; 
+}
+
+.Menu .menu-item,
+.menu-popup .menu-item {
+    border-radius: 6px !important;
+    margin: 2px 4px !important;
+    padding: 6px 12px !important;
+}
+
+.Menu .menu-item:hover,
+.menu-popup .menu-item:hover,
+.Menu .menu-item[data-selected="true"],
+.menu-popup .menu-item[data-selected="true"] {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.Menu hr,
+.menu-popup hr {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    margin: 4px 8px !important;
+}
+
+::-webkit-scrollbar { width: 8px !important; height: 8px !important; }
+::-webkit-scrollbar-track { background: transparent !important; }
+::-webkit-scrollbar-thumb { 
+    background-color: rgba(255, 255, 255, 0.15) !important; 
+    border-radius: 20px !important; 
+    border: 2px solid transparent !important; 
+    background-clip: content-box !important; 
+}
+::-webkit-scrollbar-thumb:hover { background-color: rgba(255, 255, 255, 0.3) !important; }
+::-webkit-scrollbar-button { display: none !important; }
+
+/* =========================================================================
+   FIX DE ARRASTAR A JANELA (Opção Nuclear)
+   ========================================================================= */
+
+#header,
+.toolbar-mainbar {
+    -webkit-app-region: drag !important;
+}
+
+.toolbar-mainbar > * {
+    -webkit-app-region: no-drag !important;
+}
+
+.toolbar-mainbar > .toolbar-spacer {
+    -webkit-app-region: drag !important;
+}
+
+.vivaldi,
+.window-buttongroup,
+#tabs-container,
+.tab-position .tab {
+    -webkit-app-region: no-drag !important;
+}
+
+#tabs-tabbar-container {
+    -webkit-app-region: drag !important;
+}

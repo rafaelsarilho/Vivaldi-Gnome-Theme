@@ -1,0 +1,377 @@
+/* =========================================================================
+   VIVALDI GNOME / LIBADWAITA THEME (Vertical Tabs Edition - Final)
+   ========================================================================= */
+
+/* --- PALETA DE CORES LIBADWAITA (Nautilus) --- */
+:root {
+    --gnome-sidebar-bg: #303030; /* Cinza claro da barra lateral (Panes) */
+    --gnome-main-bg: #1E1E1E;    /* Cinza escuro profundo da área principal */
+    --gnome-active-pill: rgba(255, 255, 255, 0.12); /* Fundo da aba selecionada */
+    --gnome-border: rgba(0, 0, 0, 0.35); /* Linha divisória entre painéis */
+}
+
+/* =========================================================================
+   1. ESTRUTURA GERAL DA JANELA E BOTÃO DE FECHAR NO CANTO
+   ========================================================================= */
+
+/* Arredondamento geral da janela no Linux */
+#browser.linux {
+    border-radius: 12px;
+    overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ocultar botões de minimizar e maximizar (Padrão GNOME) */
+.window-buttongroup button.window-minimize,
+.window-buttongroup button.window-maximize {
+    display: none !important;
+}
+
+/* Empurra botões de janela e menu para a extrema direita */
+#header {
+    display: flex !important;
+    width: 100% !important;
+    align-items: center !important;
+    position: relative !important; /* Necessário para fixar o botão de fechar */
+    padding-right: 42px !important; /* Cria um buraco seguro para o botão de fechar não sobrepor o menu */
+}
+
+.vivaldi {
+    order: 2 !important;
+    margin-left: auto !important; 
+    margin-top: 0 !important; 
+}
+
+/* Botão de Fechar: Pregado no canto absoluto da janela */
+.window-buttongroup {
+    position: absolute !important;
+    right: 8px !important; /* Distância da borda da janela */
+    top: 50% !important;
+    transform: translateY(-50%) !important; /* Centraliza verticalmente perfeito */
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    z-index: 9999 !important;
+}
+
+/* Estilo base do botão de fechar */
+.window-buttongroup button {
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    background-color: rgba(150, 150, 150, 0.2) !important;
+    border: none !important;
+    transition: background-color 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important; 
+}
+
+/* Limpa fundos extras nativos do Vivaldi no botão de fechar */
+.window-buttongroup button svg,
+.window-buttongroup button::after,
+.window-buttongroup button::before {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 50% !important;
+}
+
+#browser.linux .window-buttongroup button:hover {
+    background-color: rgba(150, 150, 150, 0.35) !important;
+}
+
+/* =========================================================================
+   2. O DESIGN "TWO-TONE" (Integração da Barra Lateral)
+   ========================================================================= */
+
+/* Transforma a barra de ícones e as abas na Sidebar clara */
+#switch,
+#panels-container,
+#tabs-tabbar-container.left,
+#tabs-tabbar-container.right {
+    background-color: var(--gnome-sidebar-bg) !important;
+}
+
+/* Divisória sutil entre os Ícones e as Abas */
+#switch {
+    border-right: 1px solid var(--gnome-border) !important;
+    z-index: 2 !important;
+}
+
+/* Divisória principal entre a Sidebar completa e a Área Principal */
+#tabs-tabbar-container.left {
+    border-right: 1px solid var(--gnome-border) !important;
+}
+
+/* Escurece a Área Principal e a Barra Superior */
+.toolbar-mainbar,
+.startpage,
+#webview-container {
+    background-color: var(--gnome-main-bg) !important;
+    border-bottom: none !important;
+}
+
+/* =========================================================================
+   3. ABAS VERTICAIS E PAINEL (Estilo Sidebar GNOME)
+   ========================================================================= */
+
+#tabs-tabbar-container.left {
+    padding: 8px 0 !important;
+}
+
+/* AQUi ESTÁ A CORREÇÃO DA LARGURA DA ABA (Nautilus) */
+.tab-position .tab {
+    background-color: transparent !important;
+    border-radius: 6px !important; 
+    margin: 2px 2px !important; /* Reduzido de 8px para 4px, a aba agora é mais larga e cola nas bordas */
+}
+
+.tab-position .tab::before,
+.tab-position .tab::after {
+    display: none !important;
+}
+
+/* Aba Ativa: Flat design (Sem sombra, apenas fundo translúcido) */
+.tab-position .tab.active {
+    background-color: var(--gnome-active-pill) !important; 
+    box-shadow: none !important; 
+}
+
+.tab-position .tab:not(.active):hover {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Painel Lateral (Ícones) */
+#switch {
+    padding: 8px 4px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#switch hr {
+    display: none !important;
+}
+
+#switch button.webviewbtn,
+#switch button.addwebpanel-button {
+    border-radius: 8px !important;
+    width: 38px !important;
+    height: 38px !important;
+    margin: 0 auto !important;
+    transition: background-color 0.2s ease, transform 0.1s ease !important;
+}
+
+#switch button.webviewbtn:hover,
+#switch button.addwebpanel-button:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+#switch button.webviewbtn.active {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: inset 3px 0 0 #3584E4 !important; /* Indicador de foco azul */
+}
+
+/* =========================================================================
+   4. BARRA DE ENDEREÇOS E NAVEGAÇÃO SUPERIOR
+   ========================================================================= */
+
+/* Caixa de pesquisa estilo GNOME 40+ (8px) */
+.UrlBar-AddressField, 
+.UrlBar-SearchField {
+    border-radius: 8px !important; 
+    background-color: rgba(255, 255, 255, 0.05) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+    padding-left: 8px !important;
+}
+
+.UrlBar-AddressField:focus-within, 
+.UrlBar-SearchField:focus-within {
+    border: 2px solid #3584E4 !important;
+    background-color: var(--gnome-sidebar-bg) !important;
+}
+
+/* =========================================================================
+   5. TELA INICIAL (Speed Dial & View Switcher)
+   ========================================================================= */
+
+/* Estilização dos Cartões */
+.dial {
+    border-radius: 12px !important;
+    background-color: var(--gnome-sidebar-bg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+
+.dial:hover {
+    background-color: #383838 !important;
+    transform: translateY(-2px) !important;
+}
+
+.dial-thumbnail {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+/* Ícones pequenos e centralizados */
+.thumbnail-image, 
+.speeddial .dial .thumbnail-image,
+.speeddial .dial-content {
+    background-color: var(--gnome-sidebar-bg) !important;
+    border-radius: 20px !important;
+    padding: 35px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.thumbnail-image img, 
+.thumbnail-image svg,
+.speeddial .dial img,
+.speeddial .dial svg {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 60px !important;
+    max-height: 60px !important;
+}
+
+.speeddial .dial {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.speeddial .dial .dial-title {
+    margin-top: 18px !important;
+    opacity: 0.9 !important;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    color: #eeeeec !important;
+}
+
+/* Barra de Navegação Interna (Pílulas Centralizadas) */
+.startpage-navigation {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 54px !important;
+    border-bottom: none !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.startpage-navigation button {
+    all: unset !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: transparent !important;
+    color: #eeeeec !important;
+    font-size: 13px !important;
+    font-family: 'Adwaita Sans', sans-serif !important;
+    height: 28px !important; 
+    padding: 0 16px !important;
+    border-radius: 99px !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.startpage-navigation button.active,
+.startpage-navigation button[data-selected="true"] {
+    background-color: var(--gnome-sidebar-bg) !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+.startpage-navigation button:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.startpage-navigation button::after,
+.startpage-navigation button::before {
+    display: none !important;
+}
+
+.SpeedDialView-Settings-Button {
+    display: none !important;
+}
+
+/* =========================================================================
+   6. TIPOGRAFIA, MENUS E SCROLLBARS
+   ========================================================================= */
+
+#browser, 
+#browser button, 
+#browser input, 
+#browser select, 
+#browser textarea {
+    font-family: 'Adwaita Sans', system-ui, sans-serif !important;
+}
+
+/* Menus de Contexto Arredondados */
+.Menu, .menu-popup, #browser .Menu, #browser .menu-popup {
+    background-color: var(--gnome-sidebar-bg) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    padding: 6px !important;
+    overflow: hidden !important;
+}
+
+.Menu .menu-item { border-radius: 6px !important; margin: 2px 4px !important; padding: 6px 12px !important; }
+.Menu .menu-item:hover { background-color: rgba(255, 255, 255, 0.08) !important; }
+.Menu hr { border-color: rgba(255, 255, 255, 0.05) !important; margin: 4px 8px !important; }
+
+/* Scrollbars Discretas e Flutuantes */
+::-webkit-scrollbar { width: 8px !important; height: 8px !important; }
+::-webkit-scrollbar-track { background: transparent !important; }
+::-webkit-scrollbar-thumb { 
+    background-color: rgba(255, 255, 255, 0.15) !important; 
+    border-radius: 20px !important; 
+    border: 2px solid transparent !important; 
+    background-clip: content-box !important; 
+}
+::-webkit-scrollbar-thumb:hover { background-color: rgba(255, 255, 255, 0.3) !important; }
+::-webkit-scrollbar-button { display: none !important; }
+
+/* =========================================================================
+   7. FIX DE ARRASTAR A JANELA (Opção Nuclear - GNOME)
+   ========================================================================= */
+
+/* 1. Transforma o fundo do cabeçalho e da barra de ferramentas principal em áreas de arrasto */
+#header,
+.toolbar-mainbar {
+    -webkit-app-region: drag !important;
+}
+
+/* 2. O ESCUDO GLOBAL: Protege absolutamente TUDO que está dentro da barra de ferramentas (botões, extensões, URL) para continuarem clicáveis */
+.toolbar-mainbar > * {
+    -webkit-app-region: no-drag !important;
+}
+
+/* 3. A EXCEÇÃO: Pega apenas os "Espaçamentos Flexíveis" e força eles a voltarem a ser arrastáveis */
+.toolbar-mainbar > .toolbar-spacer {
+    -webkit-app-region: drag !important;
+}
+
+/* 4. Protege o Menu Hambúrguer e o Botão de Fechar no cabeçalho */
+.vivaldi,
+.window-buttongroup {
+    -webkit-app-region: no-drag !important;
+}
+
+/* 5. Painel lateral de abas arrastável nos espaços vazios, mas abas clicáveis */
+#tabs-tabbar-container {
+    -webkit-app-region: drag !important;
+}
+.tab-position .tab {
+    -webkit-app-region: no-drag !important;
+}
