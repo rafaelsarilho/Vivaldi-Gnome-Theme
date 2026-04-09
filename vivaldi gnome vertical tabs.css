@@ -36,10 +36,12 @@
     padding-right: 42px !important; /* Cria um buraco seguro para o botão de fechar não sobrepor o menu */
 }
 
+/* Menu Hambúrguer */
 .vivaldi {
     order: 2 !important;
     margin-left: auto !important; 
-    margin-top: 0 !important; 
+    margin-right: -50px !important; /* Reduzido de 42px para aproximar os botões */
+    position: static !important;
 }
 
 /* Botão de Fechar: Pregado no canto absoluto da janela */
